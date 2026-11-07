@@ -3,6 +3,11 @@ import manifestJson from '../public/shotpack-sample/manifest.json';
 import {Shotpack} from './Shotpack';
 import {LinkedParticles} from './scenes/LinkedParticles';
 import type {ShotpackManifest} from './types';
+import {
+  YamambaTrailRescue,
+  yamambaTrailRescueDurationInFrames,
+} from './YamambaTrailRescue';
+import {YamambaGagStory, yamambaGagStoryDurationInFrames} from './YamambaGagStory';
 
 const manifest = manifestJson as ShotpackManifest;
 const deliverable =
@@ -50,6 +55,38 @@ export const Root = () => {
             defaultOutName: `${props.manifest.project.id}.mp4`,
           };
         }}
+      />
+      <Composition
+        id="YamambaTrailRescue"
+        component={YamambaTrailRescue}
+        durationInFrames={yamambaTrailRescueDurationInFrames}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{}}
+        calculateMetadata={() => ({
+          durationInFrames: yamambaTrailRescueDurationInFrames,
+          width: 1920,
+          height: 1080,
+          fps: 30,
+          defaultOutName: 'yamamba-trail-rescue.mp4',
+        })}
+      />
+      <Composition
+        id="YamambaGagStory"
+        component={YamambaGagStory}
+        durationInFrames={yamambaGagStoryDurationInFrames}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{}}
+        calculateMetadata={() => ({
+          durationInFrames: yamambaGagStoryDurationInFrames,
+          width: 1920,
+          height: 1080,
+          fps: 30,
+          defaultOutName: 'yamamba-gag-story.mp4',
+        })}
       />
     </>
   );
